@@ -41,6 +41,12 @@ class FootballPlayerDetail(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def patch(self, request, player_id):
+        queryset = FootballPlayer.objects.get(id=player_id)
+        serializer = FootballPlayerDetailSerializers(queryset)
+        # PATCH
+        return 1
+
     def delete(self, request, player_id):
         # DELETE
         queryset = FootballPlayer.objects.get(id=player_id)
