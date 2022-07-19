@@ -9,7 +9,7 @@ class FootballPlayer(models.Model):
     team = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
     uniform_number = models.IntegerField()
-    profile_img = models.ImageField(upload_to=f'media/')
+    profile_img = models.ImageField(upload_to='')
 
     def __str__(self):
         return f'{self.team} - {self.name}'
