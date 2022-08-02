@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import *
+# from restFrameworkTest.views.views_APIViews import *
+# from restFrameworkTest.views.views_Mixins import *
+from restFrameworkTest.views.views_Generic import *
 
 urlpatterns = [
     path('', FootballPlayerList.as_view(), name='players_list'),
-    path('<int:player_id>', FootballPlayerDetail.as_view(), name='player'),
+    path('<int:pk>', FootballPlayerDetail.as_view(), name='player'),
 ]

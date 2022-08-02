@@ -1,16 +1,15 @@
 # app
-from .serializers import *
+from restFrameworkTest.serializers import *
 # rest_framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from rest_framework.parsers import FileUploadParser
 # django
 from django.shortcuts import get_object_or_404
 
-# Create your views here.
-
-# Collection
+"""
+Written Using APIView
+"""
 class FootballPlayerList(APIView):
 
     def get(self, request):
@@ -21,7 +20,7 @@ class FootballPlayerList(APIView):
 
     def post(self, request):
         # POST
-        serializer = FootballPlayerDetailSerializers(data=request.data)
+        serializer = FootballPlayerSerializers(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -30,14 +29,14 @@ class FootballPlayerList(APIView):
 class FootballPlayerDetail(APIView):
     def get(self, request, player_id):
         # GET
-        queryset = get_object_or_404(FootballPlayer, id=player_id)
-        serializer = FootballPlayerDetailSerializers(queryset)
+        queryset = get_object_or_404(FootballPlayer, id=pk)
+        serializer = FootballPlayerSerializers(queryset)
         return Response(serializer.data)
 
     def put(self, request, player_id):
         # PUT
-        queryset = FootballPlayer.objects.get(id=player_id)
-        serializer = FootballPlayerDetailSerializers(queryset, data=request.data)
+        queryset = FootballPlayer.objects.get(id=pk)
+        serializer = FootballPlayerSerializers(queryset, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -45,6 +44,6 @@ class FootballPlayerDetail(APIView):
 
     def delete(self, request, player_id):
         # DELETE
-        queryset = FootballPlayer.objects.get(id=player_id)
+        queryset = FootballPlayer.objects.get(id=pk)
         queryset.delete()
         return Response("Delete completed", status=status.HTTP_200_OK)
