@@ -27,13 +27,13 @@ class FootballPlayerList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FootballPlayerDetail(APIView):
-    def get(self, request, player_id):
+    def get(self, request, pk):
         # GET
         queryset = get_object_or_404(FootballPlayer, id=pk)
         serializer = FootballPlayerSerializers(queryset)
         return Response(serializer.data)
 
-    def put(self, request, player_id):
+    def put(self, request, pk):
         # PUT
         queryset = FootballPlayer.objects.get(id=pk)
         serializer = FootballPlayerSerializers(queryset, data=request.data)
@@ -42,7 +42,7 @@ class FootballPlayerDetail(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, player_id):
+    def delete(self, request, pk):
         # DELETE
         queryset = FootballPlayer.objects.get(id=pk)
         queryset.delete()
