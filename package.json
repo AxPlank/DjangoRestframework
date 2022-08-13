@@ -6,6 +6,7 @@
   "author": "Papus <foal0912@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "yarn": "^1.22.19"
   }
 }
