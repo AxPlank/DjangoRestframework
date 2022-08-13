@@ -1,0 +1,11 @@
+{
+  "name": "restFrameworkTest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AxPlank/apitest",
+  "author": "Papus <foal0912@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "yarn": "^1.22.19"
+  }
+}
