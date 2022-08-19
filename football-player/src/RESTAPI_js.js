@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./RESTAPI_css.css"
 
 function App() {
     const [data, setData] = new useState([]);
@@ -27,8 +28,8 @@ function App() {
                 </thead>
                 <tbody>
                     {data.map((e, keyy) => (
-                        <tr>
-                            <td><img src={ e.profile_img }/></td>
+                        <tr key={ keyy }>
+                            <td><img className="image-size" src={ e.profile_img }/></td>
                             <td>{ e.name }</td>
                             <td>{ e.position }</td>
                             <td>{ e.uniform_number }</td>
